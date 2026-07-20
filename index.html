@@ -36,10 +36,6 @@
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/main-building.webp" type="image/webp" fetchpriority="high">
 
 <script type="application/ld+json">
 {
@@ -90,6 +86,25 @@
 </script>
 
 <style>
+  @font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: optional;
+    src: url("assets/nunito-cyrillic-v32.woff2") format("woff2");
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+  }
+  @font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: optional;
+    src: url("assets/nunito-latin-v32.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+      U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+      U+2215, U+FEFF, U+FFFD;
+  }
+
   :root {
     --bg: #FDF8EE;
     --bg-alt: #F8EFDD;
@@ -301,7 +316,7 @@
   .hero-card-title { font-size: 19px; font-weight: 900; color: var(--ink); margin-bottom: 10px; }
   .hero-facts { display: flex; flex-direction: column; gap: 8px; }
   .hero-fact { display: flex; justify-content: space-between; align-items: center; background: #FDF6E8; border-radius: 12px; padding: 9px 12px; }
-  .hero-fact dt { font-size: 14px; font-weight: 700; color: rgba(74,58,38,0.7); margin: 0; }
+  .hero-fact dt { font-size: 14px; font-weight: 700; color: #675945; margin: 0; }
   .hero-fact dd { font-size: 14.5px; font-weight: 900; color: var(--ink); margin: 0; display: flex; align-items: center; gap: 7px; }
   .hero-fact dd .icon { color: var(--accent-strong); font-size: 16px; }
   .sticker {
@@ -584,7 +599,7 @@
     color: #FFF8EA; font-size: 13px; font-weight: 700;
   }
   .gallery figure { margin: 0; position: absolute; inset: 0; }
-  .terr-hint { text-align: center; margin-top: 24px; font-size: 14px; color: rgba(74,58,38,0.55); font-weight: 700; }
+  .terr-hint { text-align: center; margin-top: 24px; font-size: 14px; color: #675945; font-weight: 700; }
   @media (min-width: 1000px) {
     .gallery { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .gallery button:nth-last-child(-n + 2) { grid-column: span 2; }
@@ -763,14 +778,14 @@
   .footer-inner {
     padding-top: 30px; padding-bottom: 30px;
     display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
-    font-size: 14px; color: rgba(74,58,38,0.65); font-weight: 600;
+    font-size: 14px; color: #675945; font-weight: 600;
   }
   .footer-brand { display: flex; align-items: center; gap: 14px; }
   .footer-logo-image { display: block; width: 126px; height: auto; }
   .footer-registry { margin: 0; }
   .footer-meta { display: grid; justify-items: end; gap: 7px; text-align: right; }
   .footer-privacy {
-    color: rgba(74,58,38,0.72); text-decoration: underline;
+    color: #675945; text-decoration: underline;
     text-decoration-color: rgba(74,58,38,0.25); text-underline-offset: 3px;
   }
   .footer-privacy:hover { color: var(--ink); text-decoration-color: currentColor; }
@@ -993,7 +1008,7 @@
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="#top" class="nav-logo" aria-label="Лужки - на главную">
-      <img class="nav-logo-image" src="assets/luzhki-logo-mark.png" alt="Лужки" width="989" height="505">
+      <img class="nav-logo-image" src="assets/luzhki-logo-mark-240.webp" srcset="assets/luzhki-logo-mark-240.webp 240w, assets/luzhki-logo-mark-426.webp 426w" sizes="(max-width: 640px) 122px, 132px" alt="Лужки" width="240" height="123">
       <span class="sr-only">База «Лужки» — на главную</span>
     </a>
     <nav class="nav-links" aria-label="Основная навигация">
@@ -1032,8 +1047,8 @@
 
 <section class="hero" id="top" aria-label="О базе">
   <div class="wrap hero-grid">
-    <div class="reveal">
-      <p class="hero-badge"><img class="hero-badge-check" src="assets/registry-check-3d.png" alt="" width="256" height="256" aria-hidden="true"><span>В реестре детских лагерей СПб и Ленобласти</span></p>
+    <div>
+      <p class="hero-badge"><img class="hero-badge-check" src="assets/registry-check-3d-96.webp" alt="" width="96" height="96" aria-hidden="true"><span>В реестре детских лагерей СПб и Ленобласти</span></p>
       <h1>Готовая база для <em>отдыха и оздоровления</em> в сосновом лесу</h1>
       <p class="hero-sub">Приглашаем к сотрудничеству программные лагеря, организаторов смен, творческие и спортивные коллективы, организованные группы отдыхающих.</p>
       <div class="hero-actions">
@@ -1042,15 +1057,15 @@
       </div>
       <div class="hero-social">
         <div class="hero-avatars" aria-hidden="true">
-          <img src="assets/image28-display.webp" alt="" width="1200" height="900" decoding="async">
-          <img src="assets/image13-display.webp" alt="" width="1200" height="900" decoding="async">
-          <img src="assets/image34-display.webp" alt="" width="1200" height="900" decoding="async">
-          <img src="assets/image30-display.webp" alt="" width="900" height="1200" decoding="async">
+          <img src="assets/image28-avatar.webp" alt="" width="96" height="96" decoding="async">
+          <img src="assets/image13-avatar.webp" alt="" width="96" height="96" decoding="async">
+          <img src="assets/image34-avatar.webp" alt="" width="96" height="96" decoding="async">
+          <img src="assets/image30-avatar.webp" alt="" width="96" height="96" decoding="async">
         </div>
         <p class="hero-social-note" style="max-width: 340px">Принимаем творческие и спортивные коллективы, программные лагеря и группы</p>
       </div>
     </div>
-    <div class="hero-card-zone reveal" style="--d: 120ms">
+    <div class="hero-card-zone">
       <div class="hero-card-glow" aria-hidden="true"></div>
       <div class="hero-card hero-card-tilt" id="hero-card">
         <div class="hero-card-img">
@@ -1074,7 +1089,7 @@
             </div>
           </dl>
         </div>
-        <img class="hero-coordinator" src="assets/camp-coordinator.png" alt="" aria-hidden="true" width="1024" height="1536" decoding="async">
+        <img class="hero-coordinator" src="assets/camp-coordinator-320.webp" srcset="assets/camp-coordinator-320.webp 320w, assets/camp-coordinator-420.webp 420w, assets/camp-coordinator-630.webp 630w" sizes="(max-width: 640px) 38vw, 205px" alt="" aria-hidden="true" width="320" height="480" decoding="async">
       </div>
     </div>
   </div>
@@ -1082,38 +1097,38 @@
 
 <section class="marquee" aria-label="Фотографии базы">
   <div class="marquee-track">
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: игровая площадка среди сосен" data-full="assets/image28.webp" data-cap="Игровая площадка среди сосен"><img src="assets/image28-display.webp" alt="Игровая площадка среди сосен" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: зал столовой" data-full="assets/image13.webp" data-cap="Зал столовой"><img src="assets/image13-display.webp" alt="Зал столовой" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: бухта Финского залива" data-full="assets/image34.webp" data-cap="Бухта Финского залива"><img src="assets/image34-display.webp" alt="Бухта Финского залива" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: второй корпус" data-full="assets/image4.webp" data-cap="Второй корпус"><img src="assets/image4-display.webp" alt="Второй корпус" width="900" height="1200" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: игровой комплекс" data-full="assets/image29.webp" data-cap="Игровой комплекс"><img src="assets/image29-display.webp" alt="Игровой комплекс" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: основной корпус" data-full="assets/image2.webp" data-cap="Основной корпус"><img src="assets/image2-display.webp" alt="Основной корпус" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: крытая уличная зона" data-full="assets/image36.webp" data-cap="Крытая уличная зона"><img src="assets/image36-display.webp" alt="Крытая уличная зона" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: территория базы" data-full="assets/image22.webp" data-cap="Территория базы"><img src="assets/image22-display.webp" alt="Территория базы" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: завтрак в столовой" data-full="assets/image12.webp" data-cap="Завтрак в столовой"><img src="assets/image12-display.webp" alt="Завтрак в столовой" width="900" height="1200" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: карусели на площадке" data-full="assets/image30.webp" data-cap="Карусели на площадке"><img src="assets/image30-display.webp" alt="Карусели на площадке" width="900" height="1200" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: деревянные дорожки" data-full="assets/image25.webp" data-cap="Деревянные дорожки"><img src="assets/image25-display.webp" alt="Деревянные дорожки" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: четвёртый корпус" data-full="assets/image8.webp" data-cap="Четвёртый корпус"><img src="assets/image8-display.webp" alt="Четвёртый корпус" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: жилой корпус на закате" data-full="assets/new-building-evening.webp" data-cap="Жилой корпус на закате"><img src="assets/new-building-evening-display.webp" alt="Жилой корпус на закате" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: накрытые столы в зале столовой" data-full="assets/new-dining.webp" data-cap="Накрытые столы в зале столовой"><img src="assets/new-dining-display.webp" alt="Накрытые столы в зале столовой" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: горки и игровой городок" data-full="assets/new-playground.webp" data-cap="Горки и игровой городок"><img src="assets/new-playground-display.webp" alt="Горки и игровой городок" width="1200" height="900" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: деревянная дорожка среди сосен" data-full="assets/new-boardwalk.webp" data-cap="Деревянная дорожка среди сосен"><img src="assets/new-boardwalk-display.webp" alt="Деревянная дорожка среди сосен" width="900" height="1200" loading="lazy" decoding="async"></button>
-    <img src="assets/image28-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image28.webp">
-    <img src="assets/image13-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image13.webp">
-    <img src="assets/image34-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image34.webp">
-    <img src="assets/image4-display.webp" alt="" aria-hidden="true" width="900" height="1200" loading="lazy" decoding="async" data-full="assets/image4.webp">
-    <img src="assets/image29-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image29.webp">
-    <img src="assets/image2-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image2.webp">
-    <img src="assets/image36-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image36.webp">
-    <img src="assets/image22-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image22.webp">
-    <img src="assets/image12-display.webp" alt="" aria-hidden="true" width="900" height="1200" loading="lazy" decoding="async" data-full="assets/image12.webp">
-    <img src="assets/image30-display.webp" alt="" aria-hidden="true" width="900" height="1200" loading="lazy" decoding="async" data-full="assets/image30.webp">
-    <img src="assets/image25-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image25.webp">
-    <img src="assets/image8-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image8.webp">
-    <img src="assets/new-building-evening-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/new-building-evening.webp">
-    <img src="assets/new-dining-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/new-dining.webp">
-    <img src="assets/new-playground-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/new-playground.webp">
-    <img src="assets/new-boardwalk-display.webp" alt="" aria-hidden="true" width="900" height="1200" loading="lazy" decoding="async" data-full="assets/new-boardwalk.webp">
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: игровая площадка среди сосен" data-full="assets/image28.webp" data-cap="Игровая площадка среди сосен"><img src="assets/image28-480.webp" alt="Игровая площадка среди сосен" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: зал столовой" data-full="assets/image13.webp" data-cap="Зал столовой"><img src="assets/image13-480.webp" alt="Зал столовой" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: бухта Финского залива" data-full="assets/image34.webp" data-cap="Бухта Финского залива"><img src="assets/image34-480.webp" alt="Бухта Финского залива" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: второй корпус" data-full="assets/image4.webp" data-cap="Второй корпус"><img src="assets/image4-480.webp" alt="Второй корпус" width="480" height="640" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: игровой комплекс" data-full="assets/image29.webp" data-cap="Игровой комплекс"><img src="assets/image29-480.webp" alt="Игровой комплекс" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: основной корпус" data-full="assets/image2.webp" data-cap="Основной корпус"><img src="assets/image2-480.webp" alt="Основной корпус" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: крытая уличная зона" data-full="assets/image36.webp" data-cap="Крытая уличная зона"><img src="assets/image36-480.webp" alt="Крытая уличная зона" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: территория базы" data-full="assets/image22.webp" data-cap="Территория базы"><img src="assets/image22-480.webp" alt="Территория базы" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: завтрак в столовой" data-full="assets/image12.webp" data-cap="Завтрак в столовой"><img src="assets/image12-480.webp" alt="Завтрак в столовой" width="480" height="640" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: карусели на площадке" data-full="assets/image30.webp" data-cap="Карусели на площадке"><img src="assets/image30-480.webp" alt="Карусели на площадке" width="480" height="640" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: деревянные дорожки" data-full="assets/image25.webp" data-cap="Деревянные дорожки"><img src="assets/image25-480.webp" alt="Деревянные дорожки" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: четвёртый корпус" data-full="assets/image8.webp" data-cap="Четвёртый корпус"><img src="assets/image8-480.webp" alt="Четвёртый корпус" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: жилой корпус на закате" data-full="assets/new-building-evening.webp" data-cap="Жилой корпус на закате"><img src="assets/new-building-evening-480.webp" alt="Жилой корпус на закате" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: накрытые столы в зале столовой" data-full="assets/new-dining.webp" data-cap="Накрытые столы в зале столовой"><img src="assets/new-dining-480.webp" alt="Накрытые столы в зале столовой" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: горки и игровой городок" data-full="assets/new-playground.webp" data-cap="Горки и игровой городок"><img src="assets/new-playground-480.webp" alt="Горки и игровой городок" width="480" height="360" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: деревянная дорожка среди сосен" data-full="assets/new-boardwalk.webp" data-cap="Деревянная дорожка среди сосен"><img src="assets/new-boardwalk-480.webp" alt="Деревянная дорожка среди сосен" width="480" height="640" loading="lazy" decoding="async"></button>
+    <img src="assets/image28-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/image28.webp">
+    <img src="assets/image13-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/image13.webp">
+    <img src="assets/image34-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/image34.webp">
+    <img src="assets/image4-480.webp" alt="" aria-hidden="true" width="480" height="640" loading="lazy" decoding="async" data-full="assets/image4.webp">
+    <img src="assets/image29-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/image29.webp">
+    <img src="assets/image2-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/image2.webp">
+    <img src="assets/image36-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/image36.webp">
+    <img src="assets/image22-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/image22.webp">
+    <img src="assets/image12-480.webp" alt="" aria-hidden="true" width="480" height="640" loading="lazy" decoding="async" data-full="assets/image12.webp">
+    <img src="assets/image30-480.webp" alt="" aria-hidden="true" width="480" height="640" loading="lazy" decoding="async" data-full="assets/image30.webp">
+    <img src="assets/image25-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/image25.webp">
+    <img src="assets/image8-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/image8.webp">
+    <img src="assets/new-building-evening-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/new-building-evening.webp">
+    <img src="assets/new-dining-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/new-dining.webp">
+    <img src="assets/new-playground-480.webp" alt="" aria-hidden="true" width="480" height="360" loading="lazy" decoding="async" data-full="assets/new-playground.webp">
+    <img src="assets/new-boardwalk-480.webp" alt="" aria-hidden="true" width="480" height="640" loading="lazy" decoding="async" data-full="assets/new-boardwalk.webp">
   </div>
 </section>
 
@@ -1125,32 +1140,32 @@
   </div>
   <div class="card-grid" data-stagger>
     <article class="why-card reveal">
-      <div class="why-icon why-icon-3d"><img src="assets/why-flexible-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async"></div>
+      <div class="why-icon why-icon-3d"><img src="assets/why-flexible-192.webp" srcset="assets/why-flexible-192.webp 192w, assets/why-flexible-256.webp 256w" sizes="(max-width: 640px) 68px, 88px" alt="" aria-hidden="true" width="192" height="192" loading="lazy" decoding="async"></div>
       <h3>Гибкий подход</h3>
       <p>Клиентоориентированное руководство: условия и стоимость - под ваш коллектив и сроки заезда.</p>
     </article>
     <article class="why-card reveal">
-      <div class="why-icon why-icon-3d"><img src="assets/why-ready-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async"></div>
+      <div class="why-icon why-icon-3d"><img src="assets/why-ready-192.webp" srcset="assets/why-ready-192.webp 192w, assets/why-ready-256.webp 256w" sizes="(max-width: 640px) 68px, 88px" alt="" aria-hidden="true" width="192" height="192" loading="lazy" decoding="async"></div>
       <h3>Всё готово к заезду</h3>
       <p>Корпуса, столовая, залы, классы и площадки - привозите программу и детей, остальное уже на месте.</p>
     </article>
     <article class="why-card reveal">
-      <div class="why-icon why-icon-3d"><img src="assets/why-medical-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async"></div>
+      <div class="why-icon why-icon-3d"><img src="assets/why-medical-192.webp" srcset="assets/why-medical-192.webp 192w, assets/why-medical-256.webp 256w" sizes="(max-width: 640px) 68px, 88px" alt="" aria-hidden="true" width="192" height="192" loading="lazy" decoding="async"></div>
       <h3>Медпункт на базе</h3>
       <p>Медицинский кабинет с дежурным педиатром работает всю смену.</p>
     </article>
     <article class="why-card reveal">
-      <div class="why-icon why-icon-3d"><img src="assets/why-official-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async"></div>
+      <div class="why-icon why-icon-3d"><img src="assets/why-official-192.webp" srcset="assets/why-official-192.webp 192w, assets/why-official-256.webp 256w" sizes="(max-width: 640px) 68px, 88px" alt="" aria-hidden="true" width="192" height="192" loading="lazy" decoding="async"></div>
       <h3>Официально</h3>
       <p>Реестр детских лагерей СПб и ЛО, сертификат санэпидсоответствия, документы для компенсаций.</p>
     </article>
     <article class="why-card reveal">
-      <div class="why-icon why-icon-3d"><img src="assets/why-nature-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async"></div>
+      <div class="why-icon why-icon-3d"><img src="assets/why-nature-192.webp" srcset="assets/why-nature-192.webp 192w, assets/why-nature-256.webp 256w" sizes="(max-width: 640px) 68px, 88px" alt="" aria-hidden="true" width="192" height="192" loading="lazy" decoding="async"></div>
       <h3>Природа рядом</h3>
       <p>Сосновый лес Карельского перешейка и 15 минут неспешной прогулки до бухты Финского залива.</p>
     </article>
     <article class="why-card reveal">
-      <div class="why-icon why-icon-3d"><img src="assets/why-events-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async"></div>
+      <div class="why-icon why-icon-3d"><img src="assets/why-events-192.webp" srcset="assets/why-events-192.webp 192w, assets/why-events-256.webp 256w" sizes="(max-width: 640px) 68px, 88px" alt="" aria-hidden="true" width="192" height="192" loading="lazy" decoding="async"></div>
       <h3>Уличные события</h3>
       <p>Видовое костровое место, зоны отдыха и площадки для общелагерных мероприятий под открытым небом.</p>
     </article>
@@ -1179,7 +1194,7 @@
     </article>
     <article class="corp-card reveal">
       <div class="corp-img">
-        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: второй корпус базы «Лужки»" data-full="assets/image4.webp" data-cap="Второй корпус базы «Лужки»"><img src="assets/image4-display.webp" alt="Второй корпус базы «Лужки»" width="900" height="1200" loading="lazy" decoding="async"></button></div>
+        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: второй корпус базы «Лужки»" data-full="assets/image4.webp" data-cap="Второй корпус базы «Лужки»"><img src="assets/image4-480.webp" srcset="assets/image4-480.webp 480w, assets/image4-display.webp 900w" sizes="(max-width: 640px) calc(50vw - 32px), (max-width: 1050px) 45vw, 280px" alt="Второй корпус базы «Лужки»" width="480" height="640" loading="lazy" decoding="async"></button></div>
         <span class="corp-num">02</span>
       </div>
       <div class="corp-body">
@@ -1190,7 +1205,7 @@
     </article>
     <article class="corp-card reveal">
       <div class="corp-img">
-        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: третий корпус базы «Лужки»" data-full="assets/image6.webp" data-cap="Третий корпус базы «Лужки»"><img src="assets/image6-display.webp" alt="Третий корпус базы «Лужки»" width="675" height="1200" loading="lazy" decoding="async"></button></div>
+        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: третий корпус базы «Лужки»" data-full="assets/image6.webp" data-cap="Третий корпус базы «Лужки»"><img src="assets/image6-480.webp" srcset="assets/image6-480.webp 480w, assets/image6-display.webp 675w" sizes="(max-width: 640px) calc(50vw - 32px), (max-width: 1050px) 45vw, 280px" alt="Третий корпус базы «Лужки»" width="480" height="853" loading="lazy" decoding="async"></button></div>
         <span class="corp-num">03</span>
       </div>
       <div class="corp-body">
@@ -1201,7 +1216,7 @@
     </article>
     <article class="corp-card reveal">
       <div class="corp-img">
-        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: четвёртый корпус базы «Лужки»" data-full="assets/image7.webp" data-cap="Четвёртый корпус базы «Лужки»"><img src="assets/image7-display.webp" alt="Четвёртый корпус базы «Лужки»" width="1200" height="900" loading="lazy" decoding="async"></button></div>
+        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: четвёртый корпус базы «Лужки»" data-full="assets/image7.webp" data-cap="Четвёртый корпус базы «Лужки»"><img src="assets/image7-480.webp" srcset="assets/image7-480.webp 480w, assets/image7-display.webp 1200w" sizes="(max-width: 640px) calc(50vw - 32px), (max-width: 1050px) 45vw, 280px" alt="Четвёртый корпус базы «Лужки»" width="480" height="360" loading="lazy" decoding="async"></button></div>
         <span class="corp-num">04</span>
       </div>
       <div class="corp-body">
@@ -1223,7 +1238,7 @@
   </div>
   <div class="camp-map-shell reveal">
     <div class="camp-map-board" role="group" aria-label="Схема территории базы">
-      <img class="camp-map-art camp-map-art-image" src="assets/camp-map-plan-v2.webp" alt="" width="1637" height="961" loading="lazy" decoding="async" aria-hidden="true">
+      <img class="camp-map-art camp-map-art-image" src="assets/camp-map-plan-800.webp" srcset="assets/camp-map-plan-800.webp 800w, assets/camp-map-plan-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 70vw" alt="" width="800" height="470" loading="lazy" decoding="async" aria-hidden="true">
       <svg class="camp-map-art" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
           <filter id="map-shadow" x="-30%" y="-30%" width="160%" height="180%">
@@ -1332,32 +1347,32 @@
         <span class="camp-map-point-num">01</span><span class="camp-map-point-label">Основной корпус</span>
       </button>
       <button class="camp-map-point" type="button" style="--x:29%;--y:48%" aria-pressed="false" aria-controls="camp-map-detail"
-        data-map-number="Корпус 02" data-map-title="Второй корпус" data-map-image="assets/image4.webp"
+        data-map-number="Корпус 02" data-map-title="Второй корпус" data-map-image="assets/image4-480.webp"
         data-map-alt="Второй корпус базы «Лужки»" data-map-text="До 40 отдыхающих, расселение по 3–6 человек. В корпусе расположен второй зал столовой."
         data-map-capacity="до 40 мест" data-map-rooms="по 3–6 человек">
         <span class="camp-map-point-num">02</span><span class="camp-map-point-label">Второй корпус</span>
       </button>
       <button class="camp-map-point camp-map-point-label-left" type="button" style="--x:52%;--y:73%" aria-pressed="false" aria-controls="camp-map-detail"
-        data-map-number="Корпус 03" data-map-title="Третий корпус" data-map-image="assets/image6.webp"
+        data-map-number="Корпус 03" data-map-title="Третий корпус" data-map-image="assets/image6-480.webp"
         data-map-alt="Третий корпус базы «Лужки»" data-map-text="До 22 отдыхающих, расселение по 2–3 человека. Есть общая зона, питьевой фонтан и холодильник."
         data-map-capacity="до 22 мест" data-map-rooms="по 2–3 человека">
         <span class="camp-map-point-num">03</span><span class="camp-map-point-label">Третий корпус</span>
       </button>
       <button class="camp-map-point camp-map-point-label-left" type="button" style="--x:51%;--y:24%" aria-pressed="false" aria-controls="camp-map-detail"
-        data-map-number="Корпус 04" data-map-title="Четвёртый корпус" data-map-image="assets/image7.webp"
+        data-map-number="Корпус 04" data-map-title="Четвёртый корпус" data-map-image="assets/image7-480.webp"
         data-map-alt="Четвёртый корпус базы «Лужки»" data-map-text="До 41 отдыхающего, расселение по 3–4 человека. Есть общая зона, питьевой фонтан и холодильник."
         data-map-capacity="до 41 места" data-map-rooms="по 3–4 человека">
         <span class="camp-map-point-num">04</span><span class="camp-map-point-label">Четвёртый корпус</span>
       </button>
 
       <button class="camp-map-point camp-map-point-zone camp-map-point-label-left" type="button" style="--x:40%;--y:47%" aria-pressed="false" aria-controls="camp-map-detail"
-        data-map-number="Территория" data-map-title="Зона отдыха" data-map-image="assets/new-campfire.webp"
+        data-map-number="Территория" data-map-title="Зона отдыха" data-map-image="assets/new-campfire-480.webp"
         data-map-alt="Зона отдыха с фонтаном на базе «Лужки»" data-map-text="Тихое место под соснами для общения, отрядных сборов и спокойного отдыха."
         data-map-capacity="зона отдыха" data-map-rooms="под соснами">
         <span class="camp-map-point-num"><svg class="icon" aria-hidden="true"><use href="#i-fire"/></svg></span><span class="camp-map-point-label">Зона отдыха</span>
       </button>
       <button class="camp-map-point camp-map-point-zone" type="button" style="--x:52%;--y:52%" aria-pressed="false" aria-controls="camp-map-detail"
-        data-map-number="Территория" data-map-title="Футбольное поле и спортплощадка" data-map-image="assets/image1.webp"
+        data-map-number="Территория" data-map-title="Футбольное поле и спортплощадка" data-map-image="assets/image1-480.webp"
         data-map-alt="Спортивная площадка базы «Лужки»" data-map-text="Открытая площадка для футбола, командных игр, зарядок и спортивной программы смены."
         data-map-capacity="футбольное поле" data-map-rooms="спортплощадка">
         <span class="camp-map-point-num">
@@ -1365,7 +1380,7 @@
         </span><span class="camp-map-point-label">Спортплощадка</span>
       </button>
       <button class="camp-map-point camp-map-point-zone camp-map-point-label-left" type="button" style="--x:26%;--y:73%" aria-pressed="false" aria-controls="camp-map-detail"
-        data-map-number="Территория" data-map-title="Детская площадка" data-map-image="assets/new-playground.webp"
+        data-map-number="Территория" data-map-title="Детская площадка" data-map-image="assets/new-playground-480.webp"
         data-map-alt="Детская площадка базы «Лужки»" data-map-text="Игровой городок с горками и каруселями рядом с жилыми корпусами."
         data-map-capacity="игровой городок" data-map-rooms="горки и карусели">
         <span class="camp-map-point-num">
@@ -1373,7 +1388,7 @@
         </span><span class="camp-map-point-label">Детская площадка</span>
       </button>
       <button class="camp-map-point camp-map-point-zone camp-map-point-label-left" type="button" style="--x:84%;--y:45%" aria-pressed="false" aria-controls="camp-map-detail"
-        data-map-number="Рядом с базой" data-map-title="Озеро" data-map-image="assets/image37.webp"
+        data-map-number="Рядом с базой" data-map-title="Озеро" data-map-image="assets/image37-480.webp"
         data-map-alt="Озеро рядом с базой «Лужки»" data-map-text="Живописное озеро у северо-восточной границы территории."
         data-map-capacity="у границы базы" data-map-rooms="природная зона">
         <span class="camp-map-point-num"><svg class="icon" aria-hidden="true"><use href="#i-wave"/></svg></span><span class="camp-map-point-label">Озеро</span>
@@ -1410,14 +1425,14 @@
       <h2 id="food-title">Пятиразовое питание в двух залах столовой</h2>
       <p>Здоровая, полезная и вкусная еда пять раз в день. Залы - в основном и втором корпусах, отрядам не нужно далеко ходить даже в дождь.</p>
       <div class="food-med">
-        <img class="food-med-visual" src="assets/food-med-cabinet-3d.webp" alt="" aria-hidden="true" width="1254" height="1254" loading="lazy" decoding="async">
+        <img class="food-med-visual" src="assets/food-med-cabinet-256.webp" alt="" aria-hidden="true" width="256" height="256" loading="lazy" decoding="async">
         <p><b>Медицинский кабинет</b> с дежурным педиатром работает всю смену</p>
       </div>
     </div>
     <div class="food-photos">
-      <button class="zoom-btn" type="button" aria-label="Открыть фото: накрытые столы в зале столовой" data-full="assets/new-dining.webp" data-cap="Накрытые столы в зале столовой"><img src="assets/new-dining-display.webp" alt="Накрытые столы в зале столовой базы «Лужки»" width="1200" height="900" loading="lazy" decoding="async"></button>
-      <button class="zoom-btn" type="button" aria-label="Открыть фото: завтрак, сырники со сгущёнкой" data-full="assets/image12.webp" data-cap="Завтрак: сырники со сгущёнкой"><img src="assets/image12-display.webp" alt="Завтрак: сырники со сгущёнкой" width="900" height="1200" loading="lazy" decoding="async"></button>
-      <button class="zoom-btn" type="button" aria-label="Открыть фото: каша с фруктами на завтрак" data-full="assets/image15.webp" data-cap="Каша с фруктами на завтрак"><img src="assets/image15-display.webp" alt="Каша с фруктами на завтрак" width="900" height="1200" loading="lazy" decoding="async"></button>
+      <button class="zoom-btn" type="button" aria-label="Открыть фото: накрытые столы в зале столовой" data-full="assets/new-dining.webp" data-cap="Накрытые столы в зале столовой"><img src="assets/new-dining-480.webp" srcset="assets/new-dining-480.webp 480w, assets/new-dining-display.webp 1200w" sizes="(max-width: 640px) calc(100vw - 40px), 40vw" alt="Накрытые столы в зале столовой базы «Лужки»" width="480" height="360" loading="lazy" decoding="async"></button>
+      <button class="zoom-btn" type="button" aria-label="Открыть фото: завтрак, сырники со сгущёнкой" data-full="assets/image12.webp" data-cap="Завтрак: сырники со сгущёнкой"><img src="assets/image12-480.webp" srcset="assets/image12-480.webp 480w, assets/image12-display.webp 900w" sizes="(max-width: 640px) calc(50vw - 28px), 20vw" alt="Завтрак: сырники со сгущёнкой" width="480" height="640" loading="lazy" decoding="async"></button>
+      <button class="zoom-btn" type="button" aria-label="Открыть фото: каша с фруктами на завтрак" data-full="assets/image15.webp" data-cap="Каша с фруктами на завтрак"><img src="assets/image15-480.webp" srcset="assets/image15-480.webp 480w, assets/image15-display.webp 900w" sizes="(max-width: 640px) calc(50vw - 28px), 20vw" alt="Каша с фруктами на завтрак" width="480" height="640" loading="lazy" decoding="async"></button>
     </div>
   </div>
 </section>
@@ -1429,28 +1444,28 @@
   </div>
   <div class="infra-grid" data-stagger>
     <article class="infra-card reveal">
-      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: спортивно-развлекательный зал под куполом" data-full="assets/image18.webp" data-cap="Спортивно-развлекательный зал под куполом"><img src="assets/image18-display.webp" alt="Спортивно-развлекательный зал под куполом" width="1200" height="819" loading="lazy" decoding="async"></button></div>
+      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: спортивно-развлекательный зал под куполом" data-full="assets/image18.webp" data-cap="Спортивно-развлекательный зал под куполом"><img src="assets/image18-480.webp" srcset="assets/image18-480.webp 480w, assets/image18-display.webp 1200w" sizes="(max-width: 640px) calc(50vw - 32px), (max-width: 1050px) 45vw, 280px" alt="Спортивно-развлекательный зал под куполом" width="480" height="328" loading="lazy" decoding="async"></button></div>
       <div class="infra-card-body">
         <h3>Спортивно-развлекательный зал</h3>
         <p>11 × 15,5 м, купол 5,5–7 м - спортивные игры, концерты, общелагерные события.</p>
       </div>
     </article>
     <article class="infra-card reveal">
-      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: зал развлекательных мероприятий" data-full="assets/image20.webp" data-cap="Зал развлекательных мероприятий"><img src="assets/image20-display.webp" alt="Зал развлекательных мероприятий" width="1200" height="800" loading="lazy" decoding="async"></button></div>
+      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: зал развлекательных мероприятий" data-full="assets/image20.webp" data-cap="Зал развлекательных мероприятий"><img src="assets/image20-480.webp" srcset="assets/image20-480.webp 480w, assets/image20-display.webp 1200w" sizes="(max-width: 640px) calc(50vw - 32px), (max-width: 1050px) 45vw, 280px" alt="Зал развлекательных мероприятий" width="480" height="320" loading="lazy" decoding="async"></button></div>
       <div class="infra-card-body">
         <h3>Зал развлекательных мероприятий</h3>
         <p>11,5 × 8,7 м - кружки, репетиции, вечерние программы.</p>
       </div>
     </article>
     <article class="infra-card reveal">
-      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: класс для занятий и мастер-классов" data-full="assets/image17.webp" data-cap="Класс для занятий и мастер-классов"><img src="assets/image17-display.webp" alt="Класс для занятий и мастер-классов" width="1200" height="900" loading="lazy" decoding="async"></button></div>
+      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: класс для занятий и мастер-классов" data-full="assets/image17.webp" data-cap="Класс для занятий и мастер-классов"><img src="assets/image17-480.webp" srcset="assets/image17-480.webp 480w, assets/image17-display.webp 1200w" sizes="(max-width: 640px) calc(50vw - 32px), (max-width: 1050px) 45vw, 280px" alt="Класс для занятий и мастер-классов" width="480" height="360" loading="lazy" decoding="async"></button></div>
       <div class="infra-card-body">
         <h3>Классы и отрядные локации</h3>
         <p>Помещения для занятий, мастер-классов и отрядных сборов в каждом корпусе.</p>
       </div>
     </article>
     <article class="infra-card reveal">
-      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: вечерняя дискотека в зале" data-full="assets/image19.webp" data-cap="Вечерняя дискотека в зале"><img src="assets/image19-display.webp" alt="Вечерняя дискотека в зале" width="1200" height="900" loading="lazy" decoding="async"></button></div>
+      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: вечерняя дискотека в зале" data-full="assets/image19.webp" data-cap="Вечерняя дискотека в зале"><img src="assets/image19-480.webp" srcset="assets/image19-480.webp 480w, assets/image19-display.webp 1200w" sizes="(max-width: 640px) calc(50vw - 32px), (max-width: 1050px) 45vw, 280px" alt="Вечерняя дискотека в зале" width="480" height="360" loading="lazy" decoding="async"></button></div>
       <div class="infra-card-body">
         <h3>Дискотеки и огоньки</h3>
         <p>Свет и пространство для вечерних мероприятий - завершение дня, которое запоминается.</p>
@@ -1470,34 +1485,34 @@
     </div>
     <div class="gallery" data-stagger>
       <button class="reveal" type="button" data-full="assets/image28.webp" data-cap="Игровая площадка">
-        <figure><img src="assets/image28-display.webp" alt="Игровая площадка" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Игровая площадка</figcaption></figure>
+        <figure><img src="assets/image28-480.webp" srcset="assets/image28-480.webp 480w, assets/image28-display.webp 1200w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Игровая площадка" width="480" height="360" loading="lazy" decoding="async"><figcaption>Игровая площадка</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image29.webp" data-cap="Игровой комплекс среди сосен">
-        <figure><img src="assets/image29-display.webp" alt="Игровой комплекс среди сосен" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Игровой комплекс среди сосен</figcaption></figure>
+        <figure><img src="assets/image29-480.webp" srcset="assets/image29-480.webp 480w, assets/image29-display.webp 1200w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Игровой комплекс среди сосен" width="480" height="360" loading="lazy" decoding="async"><figcaption>Игровой комплекс среди сосен</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image1.webp" data-cap="Спортивная площадка">
-        <figure><img src="assets/image1-display.webp" alt="Спортивная площадка" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Спортивная площадка</figcaption></figure>
+        <figure><img src="assets/image1-480.webp" srcset="assets/image1-480.webp 480w, assets/image1-display.webp 1200w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Спортивная площадка" width="480" height="360" loading="lazy" decoding="async"><figcaption>Спортивная площадка</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/new-carousel.webp" data-cap="Катание на каруселях">
-        <figure><img src="assets/new-carousel-display.webp" alt="Дети катаются на каруселях" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Катание на каруселях</figcaption></figure>
+        <figure><img src="assets/new-carousel-480.webp" srcset="assets/new-carousel-480.webp 480w, assets/new-carousel-display.webp 900w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Дети катаются на каруселях" width="480" height="640" loading="lazy" decoding="async"><figcaption>Катание на каруселях</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image25.webp" data-cap="Деревянные дорожки">
-        <figure><img src="assets/image25-display.webp" alt="Деревянные дорожки" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Деревянные дорожки</figcaption></figure>
+        <figure><img src="assets/image25-480.webp" srcset="assets/image25-480.webp 480w, assets/image25-display.webp 1200w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Деревянные дорожки" width="480" height="360" loading="lazy" decoding="async"><figcaption>Деревянные дорожки</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image36.webp" data-cap="Крытая уличная зона">
-        <figure><img src="assets/image36-display.webp" alt="Крытая уличная зона" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Крытая уличная зона</figcaption></figure>
+        <figure><img src="assets/image36-480.webp" srcset="assets/image36-480.webp 480w, assets/image36-display.webp 1200w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Крытая уличная зона" width="480" height="360" loading="lazy" decoding="async"><figcaption>Крытая уличная зона</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image37.webp" data-cap="Видовое костровое место">
-        <figure><img src="assets/image37-display.webp" alt="Видовое костровое место" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Видовое костровое место</figcaption></figure>
+        <figure><img src="assets/image37-480.webp" srcset="assets/image37-480.webp 480w, assets/image37-display.webp 1200w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Видовое костровое место" width="480" height="360" loading="lazy" decoding="async"><figcaption>Видовое костровое место</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/new-campfire.webp" data-cap="Зона отдыха с фонтаном">
-        <figure><img src="assets/new-campfire-display.webp" alt="Зона отдыха с фонтаном" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Зона отдыха с фонтаном</figcaption></figure>
+        <figure><img src="assets/new-campfire-480.webp" srcset="assets/new-campfire-480.webp 480w, assets/new-campfire-display.webp 900w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Зона отдыха с фонтаном" width="480" height="640" loading="lazy" decoding="async"><figcaption>Зона отдыха с фонтаном</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/new-playground.webp" data-cap="Горки и игровой городок">
-        <figure><img src="assets/new-playground-display.webp" alt="Горки и игровой городок" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Горки и игровой городок</figcaption></figure>
+        <figure><img src="assets/new-playground-480.webp" srcset="assets/new-playground-480.webp 480w, assets/new-playground-display.webp 1200w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Горки и игровой городок" width="480" height="360" loading="lazy" decoding="async"><figcaption>Горки и игровой городок</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/new-building-evening.webp" data-cap="Жилой корпус на закате">
-        <figure><img src="assets/new-building-evening-display.webp" alt="Жилой корпус на закате" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Жилой корпус на закате</figcaption></figure>
+        <figure><img src="assets/new-building-evening-480.webp" srcset="assets/new-building-evening-480.webp 480w, assets/new-building-evening-display.webp 1200w" sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 999px) 46vw, 24vw" alt="Жилой корпус на закате" width="480" height="360" loading="lazy" decoding="async"><figcaption>Жилой корпус на закате</figcaption></figure>
       </button>
     </div>
     <p class="terr-hint">Нажмите на фото, чтобы рассмотреть ближе</p>
@@ -1512,17 +1527,17 @@
   </div>
   <div class="steps-grid" data-stagger>
     <article class="step-card reveal">
-      <div class="step-head"><div class="step-num" aria-hidden="true">01</div><img class="step-icon-3d" src="assets/step-contact-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async"></div>
+      <div class="step-head"><div class="step-num" aria-hidden="true">01</div><img class="step-icon-3d" src="assets/step-contact-256.webp" alt="" aria-hidden="true" width="256" height="256" loading="lazy" decoding="async"></div>
       <h3>Позвоните или напишите</h3>
       <p>Расскажите о вашем коллективе, количестве отдыхающих и желаемых датах - сразу сориентируем по стоимости.</p>
     </article>
     <article class="step-card reveal">
-      <div class="step-head"><div class="step-num" aria-hidden="true">02</div><img class="step-icon-3d" src="assets/step-visit-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async"></div>
+      <div class="step-head"><div class="step-num" aria-hidden="true">02</div><img class="step-icon-3d" src="assets/step-visit-256.webp" alt="" aria-hidden="true" width="256" height="256" loading="lazy" decoding="async"></div>
       <h3>Приезжайте на осмотр</h3>
       <p>Покажем корпуса, столовую, залы и территорию. Обсудим расселение отрядов и логистику вашей программы.</p>
     </article>
     <article class="step-card reveal">
-      <div class="step-head"><div class="step-num" aria-hidden="true">03</div><img class="step-icon-3d" src="assets/why-official-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async"></div>
+      <div class="step-head"><div class="step-num" aria-hidden="true">03</div><img class="step-icon-3d" src="assets/why-official-256.webp" alt="" aria-hidden="true" width="256" height="256" loading="lazy" decoding="async"></div>
       <h3>Договор и заезд</h3>
       <p>Фиксируем условия и даты. Готовим корпуса к вашей смене - приезжайте и проводите программу.</p>
     </article>
@@ -1620,7 +1635,7 @@
         </div>
       </div>
       <div class="addr-card">
-        <img class="addr-icon-3d" src="assets/addr-location-3d.webp" alt="" aria-hidden="true" width="1024" height="1024" loading="lazy" decoding="async">
+        <img class="addr-icon-3d" src="assets/addr-location-320.webp" alt="" aria-hidden="true" width="320" height="320" loading="lazy" decoding="async">
         <h3><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Как нас найти</h3>
         <address>Ленинградская область, Выборгский район, Приморское ГП, Высокинская территория, Речной проезд, 152</address>
         <a href="https://yandex.ru/maps/-/CTVBjG1Z" target="_blank" rel="noopener" class="btn btn-dark addr-map-btn">Открыть в Яндекс Картах</a>
@@ -1635,7 +1650,7 @@
 <footer>
   <div class="wrap footer-inner">
     <p class="footer-brand" style="margin:0">
-      <img class="footer-logo-image" src="assets/luzhki-logo-mark.png" alt="Лужки" width="989" height="505" loading="lazy" decoding="async">
+      <img class="footer-logo-image" src="assets/luzhki-logo-mark-240.webp" srcset="assets/luzhki-logo-mark-240.webp 240w, assets/luzhki-logo-mark-426.webp 426w" sizes="142px" alt="Лужки" width="240" height="123" loading="lazy" decoding="async">
       <span>База «Лужки» · Карельский перешеек</span>
     </p>
     <div class="footer-meta">
@@ -1662,7 +1677,7 @@
     </div>
   </div>
   <figure>
-    <img id="lightbox-img" src="assets/main-building.webp" alt="">
+    <img id="lightbox-img" src="assets/main-building.webp" alt="" width="980" height="350">
     <figcaption id="lightbox-cap"></figcaption>
   </figure>
 </div>
@@ -1838,6 +1853,8 @@
 
     function revealLoadedImage() {
       if (request !== lbLoadRequest) return;
+      lbImg.width = preloader.naturalWidth;
+      lbImg.height = preloader.naturalHeight;
       lbImg.src = btn.dataset.full;
       lbImg.alt = btn.dataset.cap;
       requestAnimationFrame(function () {
