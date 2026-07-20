@@ -39,7 +39,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/main-building.jpeg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/main-building.webp" type="image/webp" fetchpriority="high">
 
 <script type="application/ld+json">
 {
@@ -799,13 +799,37 @@
     transition: opacity 180ms ease, filter 180ms ease;
   }
   .lightbox.swap img { opacity: 0; filter: blur(5px); }
+  .lightbox.loading img { opacity: 0.12; filter: blur(8px); }
+  .lightbox-loader {
+    position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transform: translateY(4px);
+    transition: opacity 180ms ease, transform 220ms var(--ease-out);
+  }
+  .lightbox.loading .lightbox-loader { opacity: 1; transform: translateY(0); }
+  .lightbox-loader-box {
+    display: flex; align-items: center; gap: 11px;
+    padding: 12px 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px;
+    background: rgba(30,20,8,0.78); color: #FFF8EA;
+    box-shadow: 0 14px 38px rgba(0,0,0,0.3); backdrop-filter: blur(10px);
+    font-size: 14px; line-height: 1.2; font-weight: 800;
+  }
+  .lightbox-loader-spinner {
+    width: 22px; height: 22px; flex: 0 0 22px; border-radius: 50%;
+    border: 3px solid rgba(255,248,234,0.26); border-top-color: #F5A623;
+    animation: lightboxSpin 720ms linear infinite;
+  }
+  .lightbox.load-error .lightbox-loader-spinner {
+    animation: none; border-color: #F4C17B;
+  }
+  @keyframes lightboxSpin { to { transform: rotate(360deg); } }
   .lightbox figcaption {
     max-width: 100%; margin-top: 12px; padding: 7px 14px; border-radius: 999px;
     background: rgba(30,20,8,0.72); color: #FFF8EA;
     font-size: 14.5px; line-height: 1.35; font-weight: 700;
   }
   .lightbox-close {
-    position: absolute; top: 20px; right: 20px;
+    position: absolute; z-index: 4; top: 20px; right: 20px;
     width: 44px; height: 44px; border-radius: 999px; border: 0; cursor: pointer;
     background: rgba(253,248,238,0.14); color: #FFF8EA;
     display: flex; align-items: center; justify-content: center;
@@ -815,7 +839,7 @@
   @media (hover: hover) and (pointer: fine) { .lightbox-close:hover { background: rgba(253,248,238,0.28); } }
   .lightbox-close .icon { font-size: 20px; }
   .lightbox-nav {
-    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 4;
     width: 46px; height: 46px; border-radius: 999px; border: 0; cursor: pointer;
     background: rgba(253,248,238,0.14); color: #FFF8EA;
     display: flex; align-items: center; justify-content: center;
@@ -832,6 +856,9 @@
     .lightbox { padding: 16px; }
     .lightbox-prev { left: 6px; }
     .lightbox-next { right: 6px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox-loader-spinner { animation: none; }
   }
   @media (max-width: 1050px) {
     .hero-grid { grid-template-columns: 1fr; }
@@ -1015,10 +1042,10 @@
       </div>
       <div class="hero-social">
         <div class="hero-avatars" aria-hidden="true">
-          <img src="assets/image28.webp" alt="" width="40" height="40" decoding="async">
-          <img src="assets/image13.webp" alt="" width="40" height="40" decoding="async">
-          <img src="assets/image34.webp" alt="" width="40" height="40" decoding="async">
-          <img src="assets/image30.webp" alt="" width="40" height="40" decoding="async">
+          <img src="assets/image28-display.webp" alt="" width="1200" height="900" decoding="async">
+          <img src="assets/image13-display.webp" alt="" width="1200" height="900" decoding="async">
+          <img src="assets/image34-display.webp" alt="" width="1200" height="900" decoding="async">
+          <img src="assets/image30-display.webp" alt="" width="900" height="1200" decoding="async">
         </div>
         <p class="hero-social-note" style="max-width: 340px">Принимаем творческие и спортивные коллективы, программные лагеря и группы</p>
       </div>
@@ -1027,7 +1054,7 @@
       <div class="hero-card-glow" aria-hidden="true"></div>
       <div class="hero-card hero-card-tilt" id="hero-card">
         <div class="hero-card-img">
-          <img src="assets/main-building.jpeg" alt="Главный корпус базы «Лужки» на берегу пруда" width="980" height="350" fetchpriority="high">
+          <img src="assets/main-building.webp" alt="Главный корпус базы «Лужки» на берегу пруда" width="980" height="350" fetchpriority="high">
           <p class="hero-card-tag">2027 · бронирование открыто</p>
         </div>
         <div class="hero-card-body">
@@ -1055,38 +1082,38 @@
 
 <section class="marquee" aria-label="Фотографии базы">
   <div class="marquee-track">
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: игровая площадка среди сосен" data-full="assets/image28.webp" data-cap="Игровая площадка среди сосен"><img src="assets/image28.webp" alt="Игровая площадка среди сосен" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: зал столовой" data-full="assets/image13.webp" data-cap="Зал столовой"><img src="assets/image13.webp" alt="Зал столовой" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: бухта Финского залива" data-full="assets/image34.webp" data-cap="Бухта Финского залива"><img src="assets/image34.webp" alt="Бухта Финского залива" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: второй корпус" data-full="assets/image4.webp" data-cap="Второй корпус"><img src="assets/image4.webp" alt="Второй корпус" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: игровой комплекс" data-full="assets/image29.webp" data-cap="Игровой комплекс"><img src="assets/image29.webp" alt="Игровой комплекс" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: основной корпус" data-full="assets/image2.webp" data-cap="Основной корпус"><img src="assets/image2.webp" alt="Основной корпус" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: крытая уличная зона" data-full="assets/image36.webp" data-cap="Крытая уличная зона"><img src="assets/image36.webp" alt="Крытая уличная зона" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: территория базы" data-full="assets/image22.webp" data-cap="Территория базы"><img src="assets/image22.webp" alt="Территория базы" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: завтрак в столовой" data-full="assets/image12.webp" data-cap="Завтрак в столовой"><img src="assets/image12.webp" alt="Завтрак в столовой" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: карусели на площадке" data-full="assets/image30.webp" data-cap="Карусели на площадке"><img src="assets/image30.webp" alt="Карусели на площадке" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: деревянные дорожки" data-full="assets/image25.webp" data-cap="Деревянные дорожки"><img src="assets/image25.webp" alt="Деревянные дорожки" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: четвёртый корпус" data-full="assets/image8.webp" data-cap="Четвёртый корпус"><img src="assets/image8.webp" alt="Четвёртый корпус" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: жилой корпус на закате" data-full="assets/new-building-evening.webp" data-cap="Жилой корпус на закате"><img src="assets/new-building-evening.webp" alt="Жилой корпус на закате" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: накрытые столы в зале столовой" data-full="assets/new-dining.webp" data-cap="Накрытые столы в зале столовой"><img src="assets/new-dining.webp" alt="Накрытые столы в зале столовой" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: горки и игровой городок" data-full="assets/new-playground.webp" data-cap="Горки и игровой городок"><img src="assets/new-playground.webp" alt="Горки и игровой городок" width="220" height="150" loading="lazy" decoding="async"></button>
-    <button class="zoom-btn" type="button" aria-label="Открыть фото: деревянная дорожка среди сосен" data-full="assets/new-boardwalk.webp" data-cap="Деревянная дорожка среди сосен"><img src="assets/new-boardwalk.webp" alt="Деревянная дорожка среди сосен" width="220" height="150" loading="lazy" decoding="async"></button>
-    <img src="assets/image28.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image13.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image34.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image4.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image29.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image2.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image36.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image22.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image12.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image30.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image25.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/image8.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/new-building-evening.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/new-dining.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/new-playground.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
-    <img src="assets/new-boardwalk.webp" alt="" aria-hidden="true" width="220" height="150" loading="lazy" decoding="async">
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: игровая площадка среди сосен" data-full="assets/image28.webp" data-cap="Игровая площадка среди сосен"><img src="assets/image28-display.webp" alt="Игровая площадка среди сосен" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: зал столовой" data-full="assets/image13.webp" data-cap="Зал столовой"><img src="assets/image13-display.webp" alt="Зал столовой" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: бухта Финского залива" data-full="assets/image34.webp" data-cap="Бухта Финского залива"><img src="assets/image34-display.webp" alt="Бухта Финского залива" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: второй корпус" data-full="assets/image4.webp" data-cap="Второй корпус"><img src="assets/image4-display.webp" alt="Второй корпус" width="900" height="1200" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: игровой комплекс" data-full="assets/image29.webp" data-cap="Игровой комплекс"><img src="assets/image29-display.webp" alt="Игровой комплекс" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: основной корпус" data-full="assets/image2.webp" data-cap="Основной корпус"><img src="assets/image2-display.webp" alt="Основной корпус" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: крытая уличная зона" data-full="assets/image36.webp" data-cap="Крытая уличная зона"><img src="assets/image36-display.webp" alt="Крытая уличная зона" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: территория базы" data-full="assets/image22.webp" data-cap="Территория базы"><img src="assets/image22-display.webp" alt="Территория базы" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: завтрак в столовой" data-full="assets/image12.webp" data-cap="Завтрак в столовой"><img src="assets/image12-display.webp" alt="Завтрак в столовой" width="900" height="1200" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: карусели на площадке" data-full="assets/image30.webp" data-cap="Карусели на площадке"><img src="assets/image30-display.webp" alt="Карусели на площадке" width="900" height="1200" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: деревянные дорожки" data-full="assets/image25.webp" data-cap="Деревянные дорожки"><img src="assets/image25-display.webp" alt="Деревянные дорожки" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: четвёртый корпус" data-full="assets/image8.webp" data-cap="Четвёртый корпус"><img src="assets/image8-display.webp" alt="Четвёртый корпус" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: жилой корпус на закате" data-full="assets/new-building-evening.webp" data-cap="Жилой корпус на закате"><img src="assets/new-building-evening-display.webp" alt="Жилой корпус на закате" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: накрытые столы в зале столовой" data-full="assets/new-dining.webp" data-cap="Накрытые столы в зале столовой"><img src="assets/new-dining-display.webp" alt="Накрытые столы в зале столовой" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: горки и игровой городок" data-full="assets/new-playground.webp" data-cap="Горки и игровой городок"><img src="assets/new-playground-display.webp" alt="Горки и игровой городок" width="1200" height="900" loading="lazy" decoding="async"></button>
+    <button class="zoom-btn" type="button" aria-label="Открыть фото: деревянная дорожка среди сосен" data-full="assets/new-boardwalk.webp" data-cap="Деревянная дорожка среди сосен"><img src="assets/new-boardwalk-display.webp" alt="Деревянная дорожка среди сосен" width="900" height="1200" loading="lazy" decoding="async"></button>
+    <img src="assets/image28-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image28.webp">
+    <img src="assets/image13-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image13.webp">
+    <img src="assets/image34-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image34.webp">
+    <img src="assets/image4-display.webp" alt="" aria-hidden="true" width="900" height="1200" loading="lazy" decoding="async" data-full="assets/image4.webp">
+    <img src="assets/image29-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image29.webp">
+    <img src="assets/image2-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image2.webp">
+    <img src="assets/image36-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image36.webp">
+    <img src="assets/image22-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image22.webp">
+    <img src="assets/image12-display.webp" alt="" aria-hidden="true" width="900" height="1200" loading="lazy" decoding="async" data-full="assets/image12.webp">
+    <img src="assets/image30-display.webp" alt="" aria-hidden="true" width="900" height="1200" loading="lazy" decoding="async" data-full="assets/image30.webp">
+    <img src="assets/image25-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image25.webp">
+    <img src="assets/image8-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/image8.webp">
+    <img src="assets/new-building-evening-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/new-building-evening.webp">
+    <img src="assets/new-dining-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/new-dining.webp">
+    <img src="assets/new-playground-display.webp" alt="" aria-hidden="true" width="1200" height="900" loading="lazy" decoding="async" data-full="assets/new-playground.webp">
+    <img src="assets/new-boardwalk-display.webp" alt="" aria-hidden="true" width="900" height="1200" loading="lazy" decoding="async" data-full="assets/new-boardwalk.webp">
   </div>
 </section>
 
@@ -1141,7 +1168,7 @@
   <div class="corps-grid" data-stagger>
     <article class="corp-card reveal">
       <div class="corp-img">
-        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: основной корпус базы «Лужки»" data-full="assets/main-building.jpeg" data-cap="Основной корпус базы «Лужки»"><img src="assets/main-building.jpeg" alt="Основной корпус базы «Лужки»" width="980" height="350" loading="lazy" decoding="async"></button></div>
+        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: основной корпус базы «Лужки»" data-full="assets/main-building.webp" data-cap="Основной корпус базы «Лужки»"><img src="assets/main-building.webp" alt="Основной корпус базы «Лужки»" width="980" height="350" loading="lazy" decoding="async"></button></div>
         <span class="corp-num">01</span>
       </div>
       <div class="corp-body">
@@ -1152,7 +1179,7 @@
     </article>
     <article class="corp-card reveal">
       <div class="corp-img">
-        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: второй корпус базы «Лужки»" data-full="assets/image4.webp" data-cap="Второй корпус базы «Лужки»"><img src="assets/image4.webp" alt="Второй корпус базы «Лужки»" width="372" height="495" loading="lazy" decoding="async"></button></div>
+        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: второй корпус базы «Лужки»" data-full="assets/image4.webp" data-cap="Второй корпус базы «Лужки»"><img src="assets/image4-display.webp" alt="Второй корпус базы «Лужки»" width="900" height="1200" loading="lazy" decoding="async"></button></div>
         <span class="corp-num">02</span>
       </div>
       <div class="corp-body">
@@ -1163,7 +1190,7 @@
     </article>
     <article class="corp-card reveal">
       <div class="corp-img">
-        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: третий корпус базы «Лужки»" data-full="assets/image6.webp" data-cap="Третий корпус базы «Лужки»"><img src="assets/image6.webp" alt="Третий корпус базы «Лужки»" width="288" height="513" loading="lazy" decoding="async"></button></div>
+        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: третий корпус базы «Лужки»" data-full="assets/image6.webp" data-cap="Третий корпус базы «Лужки»"><img src="assets/image6-display.webp" alt="Третий корпус базы «Лужки»" width="675" height="1200" loading="lazy" decoding="async"></button></div>
         <span class="corp-num">03</span>
       </div>
       <div class="corp-body">
@@ -1174,7 +1201,7 @@
     </article>
     <article class="corp-card reveal">
       <div class="corp-img">
-        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: четвёртый корпус базы «Лужки»" data-full="assets/image7.webp" data-cap="Четвёртый корпус базы «Лужки»"><img src="assets/image7.webp" alt="Четвёртый корпус базы «Лужки»" width="610" height="457" loading="lazy" decoding="async"></button></div>
+        <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: четвёртый корпус базы «Лужки»" data-full="assets/image7.webp" data-cap="Четвёртый корпус базы «Лужки»"><img src="assets/image7-display.webp" alt="Четвёртый корпус базы «Лужки»" width="1200" height="900" loading="lazy" decoding="async"></button></div>
         <span class="corp-num">04</span>
       </div>
       <div class="corp-body">
@@ -1299,7 +1326,7 @@
       </svg>
 
       <button class="camp-map-point is-active" type="button" style="--x:35%;--y:68%" aria-pressed="true" aria-controls="camp-map-detail"
-        data-map-number="Корпус 01" data-map-title="Основной корпус на карте базы" data-map-image="assets/main-building.jpeg"
+        data-map-number="Корпус 01" data-map-title="Основной корпус на карте базы" data-map-image="assets/main-building.webp"
         data-map-alt="Основной корпус базы «Лужки»" data-map-text="Два этажа, зал столовой, общая зона для сбора отрядов, питьевой фонтан и холодильник."
         data-map-capacity="до 106 мест" data-map-rooms="по 4–6 человек">
         <span class="camp-map-point-num">01</span><span class="camp-map-point-label">Основной корпус</span>
@@ -1361,7 +1388,7 @@
 
     <aside class="camp-map-detail" id="camp-map-detail" aria-live="polite">
       <div class="camp-map-detail-media">
-        <img id="camp-map-detail-image" src="assets/main-building.jpeg" alt="Основной корпус базы «Лужки»" width="980" height="350" loading="lazy" decoding="async">
+        <img id="camp-map-detail-image" src="assets/main-building.webp" alt="Основной корпус базы «Лужки»" width="980" height="350" loading="lazy" decoding="async">
       </div>
       <div class="camp-map-detail-body">
         <p class="camp-map-kicker" id="camp-map-detail-number">Корпус 01</p>
@@ -1388,9 +1415,9 @@
       </div>
     </div>
     <div class="food-photos">
-      <button class="zoom-btn" type="button" aria-label="Открыть фото: накрытые столы в зале столовой" data-full="assets/new-dining.webp" data-cap="Накрытые столы в зале столовой"><img src="assets/new-dining.webp" alt="Накрытые столы в зале столовой базы «Лужки»" width="1200" height="900" loading="lazy" decoding="async"></button>
-      <button class="zoom-btn" type="button" aria-label="Открыть фото: завтрак, сырники со сгущёнкой" data-full="assets/image12.webp" data-cap="Завтрак: сырники со сгущёнкой"><img src="assets/image12.webp" alt="Завтрак: сырники со сгущёнкой" width="324" height="432" loading="lazy" decoding="async"></button>
-      <button class="zoom-btn" type="button" aria-label="Открыть фото: каша с фруктами на завтрак" data-full="assets/image15.webp" data-cap="Каша с фруктами на завтрак"><img src="assets/image15.webp" alt="Каша с фруктами на завтрак" width="550" height="733" loading="lazy" decoding="async"></button>
+      <button class="zoom-btn" type="button" aria-label="Открыть фото: накрытые столы в зале столовой" data-full="assets/new-dining.webp" data-cap="Накрытые столы в зале столовой"><img src="assets/new-dining-display.webp" alt="Накрытые столы в зале столовой базы «Лужки»" width="1200" height="900" loading="lazy" decoding="async"></button>
+      <button class="zoom-btn" type="button" aria-label="Открыть фото: завтрак, сырники со сгущёнкой" data-full="assets/image12.webp" data-cap="Завтрак: сырники со сгущёнкой"><img src="assets/image12-display.webp" alt="Завтрак: сырники со сгущёнкой" width="900" height="1200" loading="lazy" decoding="async"></button>
+      <button class="zoom-btn" type="button" aria-label="Открыть фото: каша с фруктами на завтрак" data-full="assets/image15.webp" data-cap="Каша с фруктами на завтрак"><img src="assets/image15-display.webp" alt="Каша с фруктами на завтрак" width="900" height="1200" loading="lazy" decoding="async"></button>
     </div>
   </div>
 </section>
@@ -1402,28 +1429,28 @@
   </div>
   <div class="infra-grid" data-stagger>
     <article class="infra-card reveal">
-      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: спортивно-развлекательный зал под куполом" data-full="assets/image18.webp" data-cap="Спортивно-развлекательный зал под куполом"><img src="assets/image18.webp" alt="Спортивно-развлекательный зал под куполом" width="658" height="448" loading="lazy" decoding="async"></button></div>
+      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: спортивно-развлекательный зал под куполом" data-full="assets/image18.webp" data-cap="Спортивно-развлекательный зал под куполом"><img src="assets/image18-display.webp" alt="Спортивно-развлекательный зал под куполом" width="1200" height="819" loading="lazy" decoding="async"></button></div>
       <div class="infra-card-body">
         <h3>Спортивно-развлекательный зал</h3>
         <p>11 × 15,5 м, купол 5,5–7 м - спортивные игры, концерты, общелагерные события.</p>
       </div>
     </article>
     <article class="infra-card reveal">
-      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: зал развлекательных мероприятий" data-full="assets/image20.webp" data-cap="Зал развлекательных мероприятий"><img src="assets/image20.webp" alt="Зал развлекательных мероприятий" width="656" height="437" loading="lazy" decoding="async"></button></div>
+      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: зал развлекательных мероприятий" data-full="assets/image20.webp" data-cap="Зал развлекательных мероприятий"><img src="assets/image20-display.webp" alt="Зал развлекательных мероприятий" width="1200" height="800" loading="lazy" decoding="async"></button></div>
       <div class="infra-card-body">
         <h3>Зал развлекательных мероприятий</h3>
         <p>11,5 × 8,7 м - кружки, репетиции, вечерние программы.</p>
       </div>
     </article>
     <article class="infra-card reveal">
-      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: класс для занятий и мастер-классов" data-full="assets/image17.webp" data-cap="Класс для занятий и мастер-классов"><img src="assets/image17.webp" alt="Класс для занятий и мастер-классов" width="520" height="390" loading="lazy" decoding="async"></button></div>
+      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: класс для занятий и мастер-классов" data-full="assets/image17.webp" data-cap="Класс для занятий и мастер-классов"><img src="assets/image17-display.webp" alt="Класс для занятий и мастер-классов" width="1200" height="900" loading="lazy" decoding="async"></button></div>
       <div class="infra-card-body">
         <h3>Классы и отрядные локации</h3>
         <p>Помещения для занятий, мастер-классов и отрядных сборов в каждом корпусе.</p>
       </div>
     </article>
     <article class="infra-card reveal">
-      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: вечерняя дискотека в зале" data-full="assets/image19.webp" data-cap="Вечерняя дискотека в зале"><img src="assets/image19.webp" alt="Вечерняя дискотека в зале" width="579" height="435" loading="lazy" decoding="async"></button></div>
+      <div class="img-clip"><button class="zoom-btn" type="button" aria-label="Открыть фото: вечерняя дискотека в зале" data-full="assets/image19.webp" data-cap="Вечерняя дискотека в зале"><img src="assets/image19-display.webp" alt="Вечерняя дискотека в зале" width="1200" height="900" loading="lazy" decoding="async"></button></div>
       <div class="infra-card-body">
         <h3>Дискотеки и огоньки</h3>
         <p>Свет и пространство для вечерних мероприятий - завершение дня, которое запоминается.</p>
@@ -1443,34 +1470,34 @@
     </div>
     <div class="gallery" data-stagger>
       <button class="reveal" type="button" data-full="assets/image28.webp" data-cap="Игровая площадка">
-        <figure><img src="assets/image28.webp" alt="Игровая площадка" width="529" height="397" loading="lazy" decoding="async"><figcaption>Игровая площадка</figcaption></figure>
+        <figure><img src="assets/image28-display.webp" alt="Игровая площадка" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Игровая площадка</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image29.webp" data-cap="Игровой комплекс среди сосен">
-        <figure><img src="assets/image29.webp" alt="Игровой комплекс среди сосен" width="529" height="397" loading="lazy" decoding="async"><figcaption>Игровой комплекс среди сосен</figcaption></figure>
+        <figure><img src="assets/image29-display.webp" alt="Игровой комплекс среди сосен" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Игровой комплекс среди сосен</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image1.webp" data-cap="Спортивная площадка">
-        <figure><img src="assets/image1.webp" alt="Спортивная площадка" width="630" height="472" loading="lazy" decoding="async"><figcaption>Спортивная площадка</figcaption></figure>
+        <figure><img src="assets/image1-display.webp" alt="Спортивная площадка" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Спортивная площадка</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/new-carousel.webp" data-cap="Катание на каруселях">
-        <figure><img src="assets/new-carousel.webp" alt="Дети катаются на каруселях" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Катание на каруселях</figcaption></figure>
+        <figure><img src="assets/new-carousel-display.webp" alt="Дети катаются на каруселях" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Катание на каруселях</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image25.webp" data-cap="Деревянные дорожки">
-        <figure><img src="assets/image25.webp" alt="Деревянные дорожки" width="529" height="397" loading="lazy" decoding="async"><figcaption>Деревянные дорожки</figcaption></figure>
+        <figure><img src="assets/image25-display.webp" alt="Деревянные дорожки" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Деревянные дорожки</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image36.webp" data-cap="Крытая уличная зона">
-        <figure><img src="assets/image36.webp" alt="Крытая уличная зона" width="536" height="402" loading="lazy" decoding="async"><figcaption>Крытая уличная зона</figcaption></figure>
+        <figure><img src="assets/image36-display.webp" alt="Крытая уличная зона" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Крытая уличная зона</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/image37.webp" data-cap="Видовое костровое место">
-        <figure><img src="assets/image37.webp" alt="Видовое костровое место" width="630" height="472" loading="lazy" decoding="async"><figcaption>Видовое костровое место</figcaption></figure>
+        <figure><img src="assets/image37-display.webp" alt="Видовое костровое место" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Видовое костровое место</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/new-campfire.webp" data-cap="Зона отдыха с фонтаном">
-        <figure><img src="assets/new-campfire.webp" alt="Зона отдыха с фонтаном" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Зона отдыха с фонтаном</figcaption></figure>
+        <figure><img src="assets/new-campfire-display.webp" alt="Зона отдыха с фонтаном" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Зона отдыха с фонтаном</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/new-playground.webp" data-cap="Горки и игровой городок">
-        <figure><img src="assets/new-playground.webp" alt="Горки и игровой городок" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Горки и игровой городок</figcaption></figure>
+        <figure><img src="assets/new-playground-display.webp" alt="Горки и игровой городок" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Горки и игровой городок</figcaption></figure>
       </button>
       <button class="reveal" type="button" data-full="assets/new-building-evening.webp" data-cap="Жилой корпус на закате">
-        <figure><img src="assets/new-building-evening.webp" alt="Жилой корпус на закате" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Жилой корпус на закате</figcaption></figure>
+        <figure><img src="assets/new-building-evening-display.webp" alt="Жилой корпус на закате" width="1200" height="900" loading="lazy" decoding="async"><figcaption>Жилой корпус на закате</figcaption></figure>
       </button>
     </div>
     <p class="terr-hint">Нажмите на фото, чтобы рассмотреть ближе</p>
@@ -1628,8 +1655,14 @@
   <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Следующее фото">
     <svg class="icon" aria-hidden="true"><use href="#i-chev"/></svg>
   </button>
+  <div class="lightbox-loader" aria-live="polite">
+    <div class="lightbox-loader-box">
+      <span class="lightbox-loader-spinner" aria-hidden="true"></span>
+      <span id="lightbox-loader-text">Загружаем фото</span>
+    </div>
+  </div>
   <figure>
-    <img id="lightbox-img" src="assets/main-building.jpeg" alt="">
+    <img id="lightbox-img" src="assets/main-building.webp" alt="">
     <figcaption id="lightbox-cap"></figcaption>
   </figure>
 </div>
@@ -1784,39 +1817,67 @@
   var lbClose = document.getElementById('lightbox-close');
   var lbPrev = document.getElementById('lightbox-prev');
   var lbNext = document.getElementById('lightbox-next');
+  var lbLoaderText = document.getElementById('lightbox-loader-text');
   /* Все кликабельные фото страницы: карусель, корпуса, питание, инфраструктура, галерея */
   var slides = Array.prototype.slice.call(document.querySelectorAll('button[data-full]'));
   var lbIndex = 0;
   var lastFocus = null;
+  var lbLoadRequest = 0;
 
   function showSlide(i, animate) {
     lbIndex = (i + slides.length) % slides.length;
     var btn = slides[lbIndex];
-    function apply() {
+    var request = ++lbLoadRequest;
+    var preloader = new Image();
+    lbCap.textContent = btn.dataset.cap;
+    lbLoaderText.textContent = 'Загружаем фото';
+    lb.classList.remove('load-error');
+    lb.classList.toggle('swap', Boolean(animate && !reduceMotion));
+    lb.classList.add('loading');
+    lb.setAttribute('aria-busy', 'true');
+
+    function revealLoadedImage() {
+      if (request !== lbLoadRequest) return;
       lbImg.src = btn.dataset.full;
       lbImg.alt = btn.dataset.cap;
-      lbCap.textContent = btn.dataset.cap;
+      requestAnimationFrame(function () {
+        if (request !== lbLoadRequest) return;
+        lb.classList.remove('loading', 'swap');
+        lb.setAttribute('aria-busy', 'false');
+      });
     }
-    if (!animate || reduceMotion) { apply(); return; }
-    lb.classList.add('swap');
-    setTimeout(function () {
-      apply();
-      if (lbImg.complete) {
-        lb.classList.remove('swap');
+
+    preloader.onload = function () {
+      if (preloader.decode) {
+        preloader.decode().catch(function () {}).then(revealLoadedImage);
       } else {
-        lbImg.addEventListener('load', function () { lb.classList.remove('swap'); }, { once: true });
+        revealLoadedImage();
       }
-    }, 180);
+    };
+    preloader.onerror = function () {
+      if (request !== lbLoadRequest) return;
+      lbLoaderText.textContent = 'Не удалось загрузить фото';
+      lb.classList.add('load-error');
+      lb.classList.remove('swap');
+      lb.setAttribute('aria-busy', 'false');
+      setTimeout(function () {
+        if (request !== lbLoadRequest) return;
+        lb.classList.remove('loading', 'load-error');
+      }, 3000);
+    };
+    preloader.src = btn.dataset.full;
   }
   function openLightbox(i) {
     lastFocus = document.activeElement;
-    showSlide(i, false);
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
+    showSlide(i, false);
     lbClose.focus();
   }
   function closeLightbox() {
-    lb.classList.remove('open');
+    lbLoadRequest++;
+    lb.classList.remove('open', 'loading', 'swap', 'load-error');
+    lb.setAttribute('aria-busy', 'false');
     document.body.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   }
@@ -1827,7 +1888,7 @@
   document.querySelectorAll('.marquee-track img[aria-hidden="true"]').forEach(function (img) {
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', function () {
-      var src = img.getAttribute('src');
+      var src = img.dataset.full || img.getAttribute('src');
       for (var i = 0; i < slides.length; i++) {
         if (slides[i].dataset.full === src) { openLightbox(i); break; }
       }
