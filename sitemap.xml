@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO: после публикации замените ВАШ-ДОМЕН.ru на реальный домен и обновите lastmod -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ВАШ-ДОМЕН.ru/</loc>
-    <lastmod>2026-07-19</lastmod>
+    <loc>https://xn--d1aeghdat6b.xn--p1ai/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
 </urlset>

@@ -1,16 +1,41 @@
-# ПРЕВЬЮ-РЕЖИМ: сайт закрыт от индексации целиком.
-# При переезде на боевой домен замените содержимое на боевую версию ниже
-# (и удалите meta robots noindex из index.html):
-#
-# User-agent: *
-# Allow: /
-# Disallow: *?*
-# Disallow: /uploads/
-# Disallow: /*.dc.html
-# Disallow: /support.js
-#
-# Host: ВАШ-ДОМЕН.ru
-# Sitemap: https://ВАШ-ДОМЕН.ru/sitemap.xml
+# AI search and answer engines
+User-agent: OAI-SearchBot
+Allow: /
 
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# AI model crawlers and content-use controls
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# All other search engines and crawlers
 User-agent: *
-Disallow: /
+Allow: /
+
+Host: xn--d1aeghdat6b.xn--p1ai
+Sitemap: https://xn--d1aeghdat6b.xn--p1ai/sitemap.xml
