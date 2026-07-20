@@ -785,11 +785,25 @@
     transition: opacity 250ms ease, visibility 0s linear 250ms;
   }
   .lightbox.open { opacity: 1; visibility: visible; transition: opacity 250ms ease; }
-  .lightbox figure { margin: 0; text-align: center; transform: scale(0.96); transition: transform 300ms var(--ease-out); }
+  .lightbox figure {
+    margin: 0; text-align: center; transform: scale(0.96);
+    display: flex; flex-direction: column; align-items: center;
+    max-width: 92vw; max-height: calc(100dvh - 40px);
+    transition: transform 300ms var(--ease-out);
+  }
   .lightbox.open figure { transform: scale(1); }
-  .lightbox img { max-width: 92vw; max-height: 84vh; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); transition: opacity 180ms ease, filter 180ms ease; }
+  .lightbox img {
+    display: block; width: auto; height: auto; object-fit: contain;
+    max-width: 100%; max-height: 84vh; max-height: calc(100dvh - 104px);
+    border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transition: opacity 180ms ease, filter 180ms ease;
+  }
   .lightbox.swap img { opacity: 0; filter: blur(5px); }
-  .lightbox figcaption { color: #FFF8EA; font-size: 14.5px; font-weight: 700; margin-top: 14px; }
+  .lightbox figcaption {
+    max-width: 100%; margin-top: 12px; padding: 7px 14px; border-radius: 999px;
+    background: rgba(30,20,8,0.72); color: #FFF8EA;
+    font-size: 14.5px; line-height: 1.35; font-weight: 700;
+  }
   .lightbox-close {
     position: absolute; top: 20px; right: 20px;
     width: 44px; height: 44px; border-radius: 999px; border: 0; cursor: pointer;
@@ -1615,7 +1629,7 @@
     <svg class="icon" aria-hidden="true"><use href="#i-chev"/></svg>
   </button>
   <figure>
-    <img id="lightbox-img" src="assets/main-building.jpeg" alt="" width="980" height="350">
+    <img id="lightbox-img" src="assets/main-building.jpeg" alt="">
     <figcaption id="lightbox-cap"></figcaption>
   </figure>
 </div>
